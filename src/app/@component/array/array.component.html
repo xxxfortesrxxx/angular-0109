@@ -1,0 +1,29 @@
+
+
+<!--@for (data of arr; track $index) {
+  <p>{{data}}</p>
+}
+
+@for (data of arrData3; track data.id){
+  @for (user of data.userData; track user.userId) {
+    <h3>{{user.userId}} </h3>
+  }
+}
+
+@for (data of players; track data) {
+<div class="UI">
+
+  <h1 class="h1">{{data.userName}} </h1>
+  <P>擁有道具：</P>
+  @for (pI of data.item; track pI.itemName) {
+  <ul>
+
+    <li>{{pI.itemName}} <span>數量：{{pI.amount}} </span></li>
+
+  </ul>
+  }
+
+</div>
+}-->
+
+

@@ -1,0 +1,13 @@
+<p>B</p>
+
+<label for="">使用者名稱：</label>
+<input #acc type="text" placeholder="">
+<br>
+<label for="" placeholder="">使用者Email：</label>
+<input #pass type="password" placeholder="">
+<br>
+<label for="">使用者地址：</label>
+<input #add type="address" placeholder="">
+<br>
+
+<button (click)="send(acc.value, pass.value, add.value)">通知</button>

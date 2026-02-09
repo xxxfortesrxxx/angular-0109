@@ -1,0 +1,47 @@
+
+<div class="weather-page">
+
+  <div class="header-section">
+    <h1>高雄市氣象預報</h1>
+    <div class="select-box">
+      <label>選擇鄉鎮：</label>
+      <select (change)="selectLocation($event)">
+
+        @for (loc of location; track loc.LocationName) {
+          <option [value]="loc.LocationName">{{ loc.LocationName }}</option>
+        }
+      </select>
+
+      <div class="main-status">
+      @let status = getCurrentWeatherStatus();
+      <img [src]="'./' + (weatherIcons[status] || 'sun.png')" class="weather-img">
+      <p class="status-text">{{ status }}</p>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="weather-container">
+    @for (weatherElement of weather; track weatherElement.ElementName) {
+      <div class="element-card">
+        @let data = weatherElement.Time?.[0]?.ElementValue?.[0];
+
+        <div class="data-grid">
+          @if (data?.Temperature) { <div class="data-item temperature">溫度：{{ data.Temperature }}°C</div> }
+          @if (data?.ApparentTemperature) { <div class="data-item">體感溫度：{{ data.ApparentTemperature }}°C</div> }
+          @if (data?.RelativeHumidity) { <div class="data-item">濕度：{{ data.RelativeHumidity }}%RH</div> }
+          @if (data?.ProbabilityOfPrecipitation) { <div class="data-item">降雨機率：{{ data.ProbabilityOfPrecipitation }}%</div> }
+          @if (data?.ComfortIndexDescription) { <div class="data-item text">{{ data.ComfortIndexDescription }}</div> }
+          @if (data?.WeatherDescription) { <div class="data-item full-width">{{ data.WeatherDescription }}</div> }
+        </div>
+      </div>
+    }
+  </div>
+
+
+
+</div>
+
